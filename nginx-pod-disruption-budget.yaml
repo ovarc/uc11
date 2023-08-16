@@ -1,0 +1,15 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: nginx-pdb
+  namespace: nginx-namespace
+  labels:
+      app: nginx
+      resource: pod-disruption-budget
+  annotations:
+    description: "PodDisruptionBudget for NGINX"
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: nginx
